@@ -1,0 +1,10 @@
+python manage.py shell 
+
+from guestbook.models import Guestbook 
+from django.utils import timezone 
+
+q = Guestbook(title='test', writer='작성자', 
+ wdate=timezone.now(), contents='내용', hit=1)
+q.save() 
+
+Guestbook.objects.all() 

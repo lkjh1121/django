@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get" name="myform">
+        <input type="hidden" name="oper" value="1"/>
+        x : <input type="text" name="x"> <br/>
+        y : <input type="text" name="y"> <br/>
+        <button type="button" id="btnAdd"> + </button>
+        <button type="button" id="btnSub"> - </button>
+        <button type="button" id="btnMul"> * </button>
+        <button type="button" id="btnDiv"> / </button>
+        <br/>
+        <button type="button" id="btnSubmit">전송</button>
+    </form>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        btnAdd = document.getElementById("btnAdd");
+        btnSub = document.getElementById("btnSub");
+        btnMul = document.getElementById("btnMul");
+        btnDiv = document.getElementById("btnDiv");
+        
+        btnAdd.addEventListener("click", ()=>{
+            //name으로 접근하려면 
+            document.myform.oper.value='1';
+            //document.getElementsByName("oper")[0].value='1';
+        });
+
+        btnSub.addEventListener("click", ()=>{
+            document.myform.oper.value='2';
+        });
+
+        btnMul.addEventListener("click", ()=>{
+            document.myform.oper.value='3';
+        });
+
+        btnDiv.addEventListener("click", ()=>{
+            document.myform.oper.value='4';
+        });
+
+        document.getElementById("btnSubmit").addEventListener("click", ()=>{
+            var frm = document.forms[0];
+            //frm.action="/guestbook/add_result/"
+            //                +frm.x.value+"/"+frm.y.value+"/"+frm.oper.value;
+            //frm.submit();
+            //a 태그를 자바스크립트에서 객체화     
+            location.href="/guestbook/add_result/"
+                           +frm.x.value+"/"+frm.y.value+"/"
+                           +frm.oper.value;
+        })
+
+}
+</script>
+
